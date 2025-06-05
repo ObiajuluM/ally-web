@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your friend in an emergency | Ally</title>
+  <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Josefin Sans', sans-serif;
+      background-color: #3C0071;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      /* background: #3C0071; */
+      color: #fff;
+      border-radius: 20px;
+      overflow: hidden;
+      max-width: 1200px;
+      width: 95%;
+    }
+
+    .left {
+      flex: 1;
+      padding: 60px 40px;
+      min-width: 300px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+    }
+
+    .logo-icon {
+      background: white;
+      width: 24px;
+      height: 24px;
+      margin-right: 10px;
+      border-radius: 4px;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin: 0 0 20px;
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 30px;
+      max-width: 400px;
+    }
+
+    .btn {
+      background: white;
+      color: #3C0071;
+      padding: 12px 24px;
+      border-radius: 30px;
+      border: none;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.3s;
+    }
+
+    .btn:hover {
+      background: #eee;
+    }
+
+    .right {
+      flex: 1;
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      padding: 40px;
+      justify-items: center;
+      align-items: center;
+      min-width: 300px;
+    }
+
+    .circle {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: #8e3cf7;
+    }
+
+    .person {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid white;
+    }
+
+    .circle.orange {
+      background: #FF6F3D;
+    }
+
+    .circle.purple {
+      background: #AB62F4;
+    }
+
+    .circle.blue {
+      background: #4D90FE;
+    }
+
+    @media(max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .right {
+        padding: 20px;
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="logo">
+        <div class="logo-icon"></div>
+        Ally
+      </div>
+      <h1>Your Friend <br>in an Emergency</h1>
+      <p>Ally is a mobile application designed to be your reliable companion during emergencies, helping you quickly
+        connect to help when you need it most.</p>
+      <button class="btn"> Join the waitlist➜</button>
+    </div>
+    <div class="right">
+      <img src="img.jpg" alt="Ally app preview" class="person"
+        style="width: 320px; height: auto; border-radius: 20px; border: 4px solid white; box-shadow: 0 4px 32px rgba(0,0,0,0.12); object-fit: cover;" />
+    </div>
+  </div>
+</body>
+
+</html>
