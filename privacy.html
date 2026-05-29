@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Privacy Policy | Ally</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: "#448AFF",
+                        "background-light": "#FFFFFF",
+                        "background-dark": "#0A0A0A",
+                    },
+                    fontFamily: {
+                        display: ["Raleway", "sans-serif"],
+                        body: ["Raleway", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                        "2xl": "1.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <script>
+        (function () {
+            try {
+                const savedTheme = localStorage.getItem('theme');
+                if (savedTheme === 'dark') {
+                    document.documentElement.classList.add('dark');
+                } else if (savedTheme === 'light') {
+                    document.documentElement.classList.remove('dark');
+                }
+            } catch (e) { }
+        })();
+    </script>
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+        }
+
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .dark .glass-nav {
+            background: rgba(10, 10, 10, 0.7);
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 antialiased transition-colors duration-300">
+
+    <!-- Nav -->
+    <nav class="fixed top-0 w-full z-50 glass-nav border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2 group cursor-pointer">
+                <div
+                    class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20">
+                    <span class="material-icons-outlined text-primary text-2xl">shield</span>
+                </div>
+                <span class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Ally</span>
+            </a>
+            <div class="flex items-center gap-6">
+                <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                    onclick="toggleTheme()">
+                    <span class="material-icons-outlined text-slate-600 dark:text-slate-400">dark_mode</span>
+                </button>
+                <a class="hidden md:block bg-primary text-white px-8 py-3 rounded-2xl font-semibold hover:bg-blue-600 transition-all transform hover:scale-105 active:scale-95"
+                    href="https://x.com/safetyally" target="_blank" rel="noopener noreferrer">
+                    Stay Updated
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="pt-40 pb-12 border-b border-slate-100 dark:border-slate-800">
+        <div class="max-w-3xl mx-auto px-6">
+            <span
+                class="inline-block py-1 px-4 rounded-full bg-primary/10 text-primary font-bold text-xs tracking-widest uppercase mb-6">
+                Legal
+            </span>
+            <h1 class="text-4xl md:text-5xl font-extrabold text-slate-950 dark:text-white leading-tight mb-4">Privacy
+                Policy</h1>
+            <p class="text-slate-500 dark:text-slate-400 text-sm">Effective date: <strong
+                    class="text-slate-700 dark:text-slate-300">May 27, 2026</strong> &nbsp;·&nbsp; Last updated: <strong
+                    class="text-slate-700 dark:text-slate-300">May 27, 2026</strong></p>
+        </div>
+    </header>
+
+    <!-- Content -->
+    <main class="py-20">
+        <div class="max-w-3xl mx-auto px-6 space-y-14">
+
+            <!-- Intro -->
+            <section id="intro">
+                <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Safety Ally ("<strong class="text-slate-900 dark:text-white">Ally</strong>", "<strong
+                        class="text-slate-900 dark:text-white">we</strong>", "<strong
+                        class="text-slate-900 dark:text-white">us</strong>", or "<strong
+                        class="text-slate-900 dark:text-white">our</strong>") is committed to protecting your privacy.
+                    This Privacy Policy explains what information we collect, how we use it, and the choices you have.
+                    Because Ally is an emergency-safety application, we handle some sensitive data — we take that
+                    responsibility seriously.
+                </p>
+                <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mt-4">
+                    By using the Ally app or website you agree to this policy. If you do not agree, please do not use
+                    our services.
+                </p>
+            </section>
+
+            <!-- Table of Contents -->
+            <nav class="p-6 rounded-2xl border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900">
+                <h2 class="text-xs font-black tracking-widest text-primary uppercase mb-4">Table of Contents</h2>
+                <ol class="space-y-2 text-sm">
+                    <li><a href="#information-we-collect"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">1.</span> Information We Collect</a></li>
+                    <li><a href="#how-we-use"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">2.</span> How We Use Your Information</a></li>
+                    <li><a href="#sharing"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">3.</span> Sharing Your Information</a></li>
+                    <li><a href="#location-data"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">4.</span> Location Data &amp; Emergency Features</a>
+                    </li>
+                    <li><a href="#data-security"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">5.</span> Data Security</a></li>
+                    <li><a href="#data-retention"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">6.</span> Data Retention</a></li>
+                    <li><a href="#your-rights"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">7.</span> Your Rights</a></li>
+                    <li><a href="#childrens-privacy"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">8.</span> Children's Privacy</a></li>
+                    <li><a href="#international-transfers"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">9.</span> International Transfers</a></li>
+                    <li><a href="#policy-changes"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">10.</span> Changes to This Policy</a></li>
+                    <li><a href="#account-deletion"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">11.</span> Account Deletion</a></li>
+                    <li><a href="#contact"
+                            class="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary dark:hover:text-primary transition-colors"><span
+                                class="text-primary font-bold w-5">12.</span> Contact Us</a></li>
+                </ol>
+            </nav>
+
+            <!-- 1 -->
+            <section id="information-we-collect">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">info</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#information-we-collect"
+                            class="group/h hover:text-primary transition-colors">1. Information We Collect <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <div class="space-y-6 text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">a) Information you provide
+                        </h3>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Name, phone number, and email address when you register or join the waitlist.</li>
+                            <li>Emergency contacts you designate within the app.</li>
+                            <li>Profile details and any content you submit through support channels.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">b) Location data</h3>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Precise GPS location when you trigger an SOS or enable live location sharing.</li>
+                            <li>General location used to populate your local directory of police, hospitals, and
+                                pharmacies.</li>
+                            <li>Location is only transmitted to your designated contacts and relevant authorities during
+                                an active emergency event.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">c) Device &amp; usage data
+                        </h3>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Device identifiers, operating system version, and app version.</li>
+                            <li>Crash logs and anonymised usage analytics to improve reliability.</li>
+                            <li>IP address and browser type when you visit our website.</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">d) Sensor &amp; audio data
+                            (optional features)</h3>
+                        <ul class="list-disc list-inside space-y-1 text-sm">
+                            <li>Microphone access is used solely for voice-trigger detection on your device; audio is
+                                processed locally and is not stored on our servers.</li>
+                            <li>Volume button presses for discreet mode activation are handled on-device only.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2 -->
+            <section id="how-we-use">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">settings</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#how-we-use"
+                            class="group/h hover:text-primary transition-colors">2. How We Use Your Information <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <li>Provide, operate, and improve the Ally platform and its safety features.</li>
+                    <li>Dispatch SOS alerts to your emergency contacts and, where applicable, local first responders.
+                    </li>
+                    <li>Personalise your experience — such as surfacing relevant nearby resources.</li>
+                    <li>Communicate important updates, security notices, and product announcements.</li>
+                    <li>Detect, investigate, and prevent fraudulent or harmful activity.</li>
+                    <li>Comply with legal obligations.</li>
+                </ul>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-4">We do <strong
+                        class="text-slate-800 dark:text-slate-200">not</strong> sell your personal data to third
+                    parties. We do not use your data for targeted advertising.</p>
+            </section>
+
+            <!-- 3 -->
+            <section id="sharing">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">share</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#sharing"
+                            class="group/h hover:text-primary transition-colors">3. Sharing Your Information <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <div class="space-y-4 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p>We share data only in the following limited circumstances:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li><strong class="text-slate-800 dark:text-slate-200">Emergency contacts</strong> — your name,
+                            location, and alert status during an active SOS event.</li>
+                        <li><strong class="text-slate-800 dark:text-slate-200">First responders &amp;
+                                authorities</strong> — location and incident data when you or we contact emergency
+                            services on your behalf.</li>
+                        <li><strong class="text-slate-800 dark:text-slate-200">Service providers</strong> — trusted
+                            vendors who help us operate our infrastructure (e.g. cloud hosting, analytics), bound by
+                            strict data-processing agreements.</li>
+                        <li><strong class="text-slate-800 dark:text-slate-200">Legal requirements</strong> — when
+                            required by applicable law, court order, or to protect the rights and safety of any person.
+                        </li>
+                        <li><strong class="text-slate-800 dark:text-slate-200">Business transfers</strong> — in
+                            connection with a merger, acquisition, or sale of assets, with prior notice to you.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 4 -->
+            <section id="location-data">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">my_location</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#location-data"
+                            class="group/h hover:text-primary transition-colors">4. Location Data &amp; Emergency
+                            Features <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <div class="space-y-3 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <p>Because location is central to Ally's safety mission, we treat it with extra care:</p>
+                    <ul class="list-disc list-inside space-y-2">
+                        <li>Precise location is only collected when a safety feature (SOS, live sharing) is actively in
+                            use.</li>
+                        <li>Background location access, when granted, is used exclusively to enable automatic
+                            threat-zone alerts; it is never used for profiling or advertising.</li>
+                        <li>You can revoke location permissions at any time through your device settings. Note that
+                            doing so disables core safety functionality.</li>
+                        <li>Location history is retained for 30 days to help resolve disputes or investigations, then
+                            permanently deleted.</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- 5 -->
+            <section id="data-security">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">lock</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#data-security"
+                            class="group/h hover:text-primary transition-colors">5. Data Security <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    We implement industry-standard safeguards including end-to-end encryption for SOS transmissions, TLS
+                    for all data in transit, and AES-256 encryption at rest. Access to personal data is restricted to
+                    authorised personnel on a need-to-know basis. Despite these measures, no system is completely immune
+                    — we encourage you to use a strong, unique password and keep your device software up to date.
+                </p>
+            </section>
+
+            <!-- 6 -->
+            <section id="data-retention">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">schedule</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#data-retention"
+                            class="group/h hover:text-primary transition-colors">6. Data Retention <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <li>Account data is retained for as long as your account is active.</li>
+                    <li>Location history: 30 days.</li>
+                    <li>Anonymised analytics: up to 24 months.</li>
+                    <li>After account deletion, we remove your personal data within 30 days, except where retention is
+                        required by law.</li>
+                </ul>
+            </section>
+
+            <!-- 7 -->
+            <section id="your-rights">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">verified_user</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#your-rights"
+                            class="group/h hover:text-primary transition-colors">7. Your Rights <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-3">Depending on your
+                    jurisdiction, you may have the right to:</p>
+                <ul class="list-disc list-inside space-y-2 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <li><strong class="text-slate-800 dark:text-slate-200">Access</strong> — request a copy of the
+                        personal data we hold about you.</li>
+                    <li><strong class="text-slate-800 dark:text-slate-200">Correction</strong> — ask us to correct
+                        inaccurate or incomplete data.</li>
+                    <li><strong class="text-slate-800 dark:text-slate-200">Deletion</strong> — request erasure of your
+                        personal data.</li>
+                    <li><strong class="text-slate-800 dark:text-slate-200">Portability</strong> — receive your data in a
+                        structured, machine-readable format.</li>
+                    <li><strong class="text-slate-800 dark:text-slate-200">Objection / restriction</strong> — object to
+                        or restrict certain processing activities.</li>
+                    <li><strong class="text-slate-800 dark:text-slate-200">Withdraw consent</strong> — where processing
+                        is based on consent, you may withdraw it at any time without affecting the lawfulness of prior
+                        processing.</li>
+                </ul>
+                <p class="text-sm text-slate-600 dark:text-slate-400 mt-4">To exercise any of these rights, email us at
+                    <a href="mailto:team@safetyally.app" class="text-primary hover:underline">team@safetyally.app</a>.
+                    We will respond within 30 days.
+                </p>
+            </section>
+
+            <!-- 8 -->
+            <section id="childrens-privacy">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">child_care</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#childrens-privacy"
+                            class="group/h hover:text-primary transition-colors">8. Children's Privacy <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Ally is not directed at children under the age of 13 (or 16 in the EU/UK). We do not knowingly
+                    collect personal data from children. If you believe we have collected data from a child without
+                    appropriate consent, please contact us immediately and we will delete it promptly.
+                </p>
+            </section>
+
+            <!-- 9 -->
+            <section id="international-transfers">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">public</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#international-transfers"
+                            class="group/h hover:text-primary transition-colors">9. International Transfers <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    Your data may be processed in countries other than your own. Where we transfer data outside your
+                    jurisdiction (including outside the EEA), we use appropriate safeguards such as Standard Contractual
+                    Clauses or equivalent mechanisms to ensure your data remains protected.
+                </p>
+            </section>
+
+            <!-- 10 -->
+            <section id="policy-changes">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">update</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#policy-changes"
+                            class="group/h hover:text-primary transition-colors">10. Changes to This Policy <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                    We may update this Privacy Policy from time to time. When we do, we will revise the "Last updated"
+                    date at the top of this page and, for material changes, notify you via email or an in-app notice.
+                    Your continued use of Ally after changes take effect constitutes acceptance of the updated policy.
+                </p>
+            </section>
+
+            <!-- 11 Account Deletion -->
+            <section id="account-deletion">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">delete_forever</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#account-deletion"
+                            class="group/h hover:text-primary transition-colors">11. Account Deletion <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <div class="space-y-8 text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">How to request deletion</h3>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Send an email to <a href="mailto:team@safetyally.app"
+                                    class="text-primary hover:underline">team@safetyally.app</a> from the email address
+                                associated with the account you want to delete.</li>
+                            <li>Use the subject line: <strong class="text-slate-800 dark:text-slate-200">REQUEST FOR
+                                    ACCOUNT DELETION</strong>.</li>
+                            <li>Optionally include any relevant details (e.g. your user ID or phone number) to help us
+                                locate your account.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">What gets deleted</h3>
+                        <p class="mb-2">We delete all data and activity associated with your Ally account, including:
+                        </p>
+                        <ul class="list-disc list-inside space-y-2">
+                            <li>Account details — name, email address, and phone number.</li>
+                            <li>Emergency contacts and safety-circle data.</li>
+                            <li>Location history and SOS event logs.</li>
+                            <li>App preferences and notification settings.</li>
+                        </ul>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">Timeline &amp; retention</h3>
+                        <p>We will permanently delete all your personal data within <strong
+                                class="text-slate-800 dark:text-slate-200">14 working days</strong> of receiving and
+                            verifying your request. No personal data is retained after deletion, except where we are
+                            required by law to keep certain records (e.g. financial or regulatory obligations), in which
+                            case we will inform you of the specific retention period.</p>
+                    </div>
+
+                    <div>
+                        <h3 class="font-semibold text-slate-800 dark:text-slate-200 mb-2">Confirmation</h3>
+                        <p>We will notify you by email once your account and data have been fully deleted.</p>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 12 Contact -->
+            <section id="contact" class="p-8 rounded-2xl bg-primary/5 border border-primary/20">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
+                        <span class="material-icons-outlined text-primary">mail</span>
+                    </div>
+                    <h2 class="text-2xl font-bold text-slate-900 dark:text-white"><a href="#contact"
+                            class="group/h hover:text-primary transition-colors">12. Contact Us <span
+                                class="opacity-0 group-hover/h:opacity-100 text-primary text-base">#</span></a></h2>
+                </div>
+                <p class="text-sm text-slate-600 dark:text-slate-400 leading-relaxed mb-4">
+                    If you have questions, concerns, or requests regarding this Privacy Policy or the way we handle your
+                    data, please reach out to our team:
+                </p>
+                <a href="mailto:team@safetyally.app"
+                    class="inline-flex items-center gap-2 text-primary font-semibold hover:underline decoration-2 underline-offset-4 transition-all">
+                    <span class="material-icons-outlined text-sm">mail</span>
+                    team@safetyally.app
+                </a>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="py-20 border-t border-slate-100 dark:border-slate-800">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col items-center">
+            <div
+                class="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center mb-8 shadow-lg shadow-primary/30">
+                <span class="material-icons-outlined text-white text-3xl">mail</span>
+            </div>
+            <h2 class="text-4xl font-extrabold text-slate-900 dark:text-white mb-6">Join In Building a Safer Future</h2>
+            <a class="text-2xl font-semibold text-primary hover:underline decoration-2 underline-offset-8 transition-all mb-12"
+                href="mailto:team@safetyally.app">
+                team@safetyally.app
+            </a>
+            <div
+                class="flex flex-col md:flex-row justify-between w-full pt-12 border-t border-slate-100 dark:border-slate-800 text-slate-400 text-sm gap-6">
+                <div class="flex items-center gap-2">
+                    <span class="material-icons-outlined text-primary text-sm">shield</span>
+                    <span>© 2026 Safety Ally Safety. All rights reserved.</span>
+                </div>
+                <a href="index.html" class="text-primary hover:underline">← Back to Home</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleTheme() {
+            const root = document.documentElement;
+            const isDark = root.classList.toggle('dark');
+            try {
+                localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            } catch (e) { }
+        }
+    </script>
+
+</body>
+
+</html>
