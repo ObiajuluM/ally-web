@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="scroll-smooth" lang="en">
+<html class="scroll-smooth dark" lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -34,21 +34,7 @@
       },
     };
   </script>
-  <script>
-    // Apply saved theme as early as possible to avoid flashes
-    (function () {
-      try {
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme === 'dark') {
-          document.documentElement.classList.add('dark');
-        } else if (savedTheme === 'light') {
-          document.documentElement.classList.remove('dark');
-        }
-      } catch (e) {
-        // If localStorage is unavailable, just use default theme
-      }
-    })();
-  </script>
+
   <style>
     body {
       font-family: 'Raleway', sans-serif;
@@ -85,10 +71,6 @@
         <span class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">Ally</span>
       </div>
       <div class="flex items-center gap-6">
-        <button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
-          onclick="toggleTheme()">
-          <span class="material-icons-outlined text-slate-600 dark:text-slate-400">dark_mode</span>
-        </button>
         <a class="hidden md:block bg-primary text-white px-8 py-3 rounded-2xl font-semibold hover:bg-blue-600 transition-all transform hover:scale-105 active:scale-95"
           href="https://x.com/safetyally" target="_blank" rel="noopener noreferrer">
           Stay Updated
@@ -303,16 +285,6 @@
       observer.observe(section);
     });
 
-    // Theme toggle with persistence
-    function toggleTheme() {
-      const root = document.documentElement;
-      const isDark = root.classList.toggle('dark');
-      try {
-        localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      } catch (e) {
-        // Ignore storage errors and just toggle visually
-      }
-    }
   </script>
 
 </body>
