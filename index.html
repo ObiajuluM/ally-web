@@ -92,14 +92,18 @@
           Instant, Intelligent Emergency Support.
         </p>
         <p class="text-lg text-slate-600 dark:text-slate-400 leading-relaxed mb-10 max-w-xl">
-          Ally is an AI-powered, context-aware safety companion that connects you to help when you need it most with
-          just one tap.
+          Ally is an AI-powered, context-aware safety companion that connects you to help when you need it most.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 max-w-lg" id="early-access">
-          <a class="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 shadow-lg shadow-primary/20 transition-all whitespace-nowrap text-center"
-            href="https://x.com/safetyally" target="_blank" rel="noopener noreferrer">
-            Stay Updated
-          </a>
+        <div id="early-access" class="max-w-lg">
+          <form id="waitlist-form" class="flex flex-col sm:flex-row gap-3" onsubmit="joinWaitlist(event)">
+            <input type="email" id="waitlist-email" placeholder="Enter your email" required
+              class="flex-1 px-5 py-4 rounded-2xl bg-slate-800 border border-slate-700 text-white placeholder-slate-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-colors" />
+            <button type="submit" id="waitlist-btn"
+              class="bg-primary text-white px-8 py-4 rounded-2xl font-bold hover:bg-blue-600 shadow-lg shadow-primary/20 transition-all whitespace-nowrap active:scale-95 disabled:opacity-60 disabled:cursor-not-allowed">
+              Join Waitlist
+            </button>
+          </form>
+          <p id="waitlist-message" class="mt-3 text-sm hidden"></p>
         </div>
       </div>
       <div class="relative flex justify-center lg:justify-end">
@@ -110,7 +114,7 @@
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2WzBNl-s0UhjSQYYywNRVp4HJmdK8rDl7B3j2U5w6OCFrSQLEJBJ2Y9FVwfUKCb6b95H75p3734aKUOLOBec7830F5GyIpOzqBl9Otn7LoqH-8tt2eSRBatTXxW0zlOkEhyy2iFzkFcfwJObCwRiyA38k9ikHggIyoG5cVy_EeLcIWj2eeaVWzrAXeD3b4nwRDS6SaHkbDoTuTUTC6GBUFVq-Ktfy-7-Mfv9CmKSYwUczC5njFpHatC-1fnRwEGJQV_8TOAPuLA3S" />
           <div class="absolute inset-0 p-6 flex flex-col">
             <div class="flex justify-between items-center mb-12">
-              <span class="text-white text-sm font-medium">14:18</span>
+              <span id="device-clock" class="text-white text-sm font-medium"></span>
               <div class="flex gap-2 text-white text-xs">
                 <span class="material-icons-outlined text-sm">signal_cellular_alt</span>
                 <span class="material-icons-outlined text-sm">wifi</span>
@@ -284,6 +288,50 @@
       section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
       observer.observe(section);
     });
+
+    function updateClock() {
+      const now = new Date();
+      const h = String(now.getHours()).padStart(2, '0');
+      const m = String(now.getMinutes()).padStart(2, '0');
+      document.getElementById('device-clock').textContent = h + ':' + m;
+    }
+    updateClock();
+    setInterval(updateClock, 1000);
+
+    async function joinWaitlist(event) {
+      event.preventDefault();
+      const email = document.getElementById('waitlist-email').value.trim();
+      const btn = document.getElementById('waitlist-btn');
+      const msg = document.getElementById('waitlist-message');
+
+      btn.disabled = true;
+      btn.textContent = 'Joining...';
+      msg.className = 'mt-3 text-sm hidden';
+      msg.textContent = '';
+
+      try {
+        const res = await fetch('https://api.safetyally.app/waitlist/join/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email })
+        });
+        const data = await res.json();
+
+        msg.textContent = data.message || (res.ok ? 'You\'re on the list!' : 'Something went wrong.');
+        msg.className = 'mt-3 text-sm ' + (res.ok ? 'text-green-400' : 'text-red-400');
+
+        if (res.status === 201) {
+          document.getElementById('waitlist-form').reset();
+        }
+      } catch (err) {
+        msg.textContent = 'Network error. Please try again.';
+        msg.className = 'mt-3 text-sm text-red-400';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Join Waitlist';
+        msg.classList.remove('hidden');
+      }
+    }
 
   </script>
 
