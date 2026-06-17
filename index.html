@@ -1,11 +1,34 @@
 <!DOCTYPE html>
-<html class="scroll-smooth dark" lang="en">
+<html class="scroll-smooth" lang="en">
 
 <head>
   <meta charset="utf-8" />
   <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <meta content="width=device-width, initial-scale=1.0" name="viewport" />
   <title>Ally | Your Friend in an Emergency</title>
+  <meta name="description"
+    content="Ally is an AI-powered, context-aware safety companion. Get instant SOS alerts, discreet emergency triggers, and real-time threat intelligence to stay safe." />
+  <meta name="keywords"
+    content="personal safety app, emergency SOS, AI safety companion, discreet alert, real-time threat intelligence, safety ally" />
+  <meta name="author" content="Safety Ally" />
+  <link rel="canonical" href="https://safetyally.app/" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://safetyally.app/" />
+  <meta property="og:title" content="Ally | Your Friend in an Emergency" />
+  <meta property="og:description"
+    content="Instant, Intelligent Emergency Support. Connect to help when you need it most with AI-powered safety features." />
+  <meta property="og:image" content="https://safetyally.app/og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image" />
+  <meta property="twitter:url" content="https://safetyally.app/" />
+  <meta property="twitter:title" content="Ally | Your Friend in an Emergency" />
+  <meta property="twitter:description"
+    content="Instant, Intelligent Emergency Support. Connect to help when you need it most." />
+  <meta property="twitter:image" content="https://safetyally.app/og-image.jpg" />
+
   <link href="https://fonts.googleapis.com" rel="preconnect" />
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
   <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700;800&amp;display=swap"
@@ -33,6 +56,31 @@
         },
       },
     };
+  </script>
+  <script>
+    (function () {
+      try {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        if (savedTheme === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) { }
+    })();
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Ally",
+      "operatingSystem": "iOS, Android",
+      "applicationCategory": "SafetyApplication",
+      "description": "AI-powered, context-aware safety companion that connects users to emergency help instantly.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      }
+    }
   </script>
 
   <style>
@@ -81,10 +129,6 @@
   <header class="relative pt-40 pb-20 overflow-hidden hero-gradient">
     <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
       <div class="relative z-10">
-        <!-- <span
-          class="inline-block py-1 px-4 rounded-full bg-primary/10 text-primary font-bold text-xs tracking-widest uppercase mb-6">
-          Safety Reinvented
-        </span> -->
         <h1 class="text-5xl md:text-7xl font-extrabold text-slate-950 dark:text-white leading-[1.1] mb-6 uppercase">
           YOUR FRIEND <br />IN AN EMERGENCY
         </h1>
