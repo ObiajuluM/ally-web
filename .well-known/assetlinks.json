@@ -2,7 +2,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "app.saftyally.ally",
+      "package_name": "app.safetyally.ally",
       "sha256_cert_fingerprints": [
         "92:F8:15:8D:65:A0:37:68:E0:29:7C:91:64:A8:C9:FA:A5:22:D4:28:08:C7:E4:1B:18:E0:CB:FE:09:92:99:09"
       ]
@@ -12,7 +12,7 @@
     "relation": ["delegate_permission/common.handle_all_urls"],
     "target": {
       "namespace": "android_app",
-      "package_name": "app.saftyally.ally.dev",
+      "package_name": "app.safetyally.ally.dev",
       "sha256_cert_fingerprints": [
         "92:F8:15:8D:65:A0:37:68:E0:29:7C:91:64:A8:C9:FA:A5:22:D4:28:08:C7:E4:1B:18:E0:CB:FE:09:92:99:09"
       ]
