@@ -156,8 +156,8 @@
         // --- 3. WEBSOCKET CONNECTION ---
         // Determine correct WebSocket protocol (wss:// for https, ws:// for http)
         const wsProtocol = window.location.protocol === 'http:' ? 'wss://' : 'ws://';
-        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/Ppa7mIHqT_-Kx7wvY7imag/`;
-        // const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/${liveId}/`;
+        // const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/Ppa7mIHqT_-Kx7wvY7imag/`;
+        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/${liveId}/`;
 
         statusText.innerText = "Connecting to Session...";
         const socket = new WebSocket(wsUrl);
