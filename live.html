@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Location | SafetyAlly</title>
+
+    <!-- MapLibre GL JS (OpenFreeMap Quick Start) -->
+    <link href="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.css" rel="stylesheet" />
+    <script src="https://unpkg.com/maplibre-gl@3.x/dist/maplibre-gl.js"></script>
+
+    <style>
+        body,
+        html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #f3f4f6;
+        }
+
+        #map {
+            width: 100%;
+            height: 100vh;
+        }
+
+        /* Floating Status Badge */
+        #status-badge {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            font-weight: 600;
+            font-size: 14px;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+
+        /* Status Indicator Dot */
+        .status-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #f59e0b;
+            /* Yellow for connecting/waiting */
+        }
+
+        .status-dot.live {
+            background-color: #10b981;
+        }
+
+        /* Green for live */
+        .status-dot.disconnected {
+            background-color: #ef4444;
+        }
+
+        /* Red for offline/error */
+
+        /* Pulsing Blue Location Marker */
+        .pulsing-marker {
+            width: 20px;
+            height: 20px;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .pulsing-marker::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%;
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 50%;
+            animation: pulse 2s infinite ease-out;
+            z-index: -1;
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.8;
+            }
+
+            100% {
+                transform: translate(-50%, -50%) scale(3);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Status Overlay -->
+    <div id="status-badge">
+        <div id="status-dot" class="status-dot"></div>
+        <span id="status-text">Initializing...</span>
+    </div>
+
+    <!-- Map Container -->
+    <div id="map"></div>
+
+    <script>
+        // --- 1. CONFIGURATION ---
+        // If this HTML is hosted on a DIFFERENT domain than your Django backend,
+        // change this to your Django backend's domain (e.g., 'api.safetyally.app').
+        // If they are on the same domain, leave it as window.location.host.
+        // const BACKEND_DOMAIN = window.location.host;
+        const BACKEND_DOMAIN = "192.168.1.61:8000"; // Change this if your backend is on a different domain
+
+        // Extract the Live ID from the URL (e.g., takes "ID" from "safetyally.app/l/ID")
+        const pathSegments = window.location.pathname.split('/').filter(Boolean);
+        const liveId = pathSegments.pop();
+
+        const statusText = document.getElementById('status-text');
+        const statusDot = document.getElementById('status-dot');
+
+        if (!liveId) {
+            statusText.innerText = "Invalid Tracking Link";
+            statusDot.className = "status-dot disconnected";
+            throw new Error("No liveId found in URL");
+        }
+
+        // --- 2. MAP INITIALIZATION ---
+        const map = new maplibregl.Map({
+            container: 'map',
+            style: 'https://tiles.openfreemap.org/styles/dark',
+            center: [0, 0],
+            zoom: 2,
+            attributionControl: false
+        });
+
+        map.addControl(new maplibregl.NavigationControl(), 'bottom-right');
+
+        // Create the custom HTML marker for the pulsing blue dot
+        const markerElement = document.createElement('div');
+        markerElement.className = 'pulsing-marker';
+        const userMarker = new maplibregl.Marker({ element: markerElement });
+        let isFirstLocation = true;
+
+        // --- 3. WEBSOCKET CONNECTION ---
+        // Determine correct WebSocket protocol (wss:// for https, ws:// for http)
+        const wsProtocol = window.location.protocol === 'http:' ? 'wss://' : 'ws://';
+        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/Ppa7mIHqT_-Kx7wvY7imag/`;
+        // const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/${liveId}/`;
+
+        statusText.innerText = "Connecting to Session...";
+        const socket = new WebSocket(wsUrl);
+
+        // --- 4. WEBSOCKET EVENT LISTENERS ---
+        socket.onopen = function (e) {
+            statusText.innerText = "Waiting for location data...";
+            console.log("Connected to WebSocket for room:", liveId);
+        };
+
+        socket.onmessage = function (event) {
+            try {
+                const data = JSON.parse(event.data);
+
+                // Expecting the payload defined in your Django consumer: 
+                // lat, long, accuracy, alt, alt_accuracy, time
+                if (data.lat && data.long) {
+                    const lngLat = [parseFloat(data.long), parseFloat(data.lat)];
+
+                    // Update Marker Position
+                    userMarker.setLngLat(lngLat).addTo(map);
+
+                    // If this is the first ping, snap the map to the user
+                    if (isFirstLocation) {
+                        map.flyTo({ center: lngLat, zoom: 16, duration: 2000 });
+                        isFirstLocation = false;
+
+                        // Update status to Live
+                        statusText.innerText = "Live Location Active";
+                        statusDot.className = "status-dot live";
+                    } else {
+                        // Smoothly pan to new location on subsequent updates
+                        map.panTo(lngLat, { duration: 1000 });
+                    }
+                } else if (data.error) {
+                    console.error("Server Error:", data.error);
+                }
+            } catch (error) {
+                console.error("Error parsing location data:", error);
+            }
+        };
+
+        socket.onclose = function (event) {
+            statusText.innerText = "Session Ended";
+            statusDot.className = "status-dot disconnected";
+            console.log("WebSocket closed");
+        };
+
+        socket.onerror = function (error) {
+            statusText.innerText = "Connection Error";
+            statusDot.className = "status-dot disconnected";
+            console.error("WebSocket Error:", error);
+        };
+    </script>
+</body>
+
+</html>
