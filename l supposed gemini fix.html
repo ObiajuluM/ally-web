@@ -51,19 +51,18 @@
             height: 10px;
             border-radius: 50%;
             background-color: #f59e0b;
-            /* Yellow for connecting/waiting */
+            /* Yellow for connecting */
         }
 
         .status-dot.live {
             background-color: #10b981;
+            /* Green for live */
         }
 
-        /* Green for live */
         .status-dot.disconnected {
             background-color: #ef4444;
+            /* Red for offline/error */
         }
-
-        /* Red for offline/error */
 
         /* Pulsing Blue Location Marker */
         .pulsing-marker {
@@ -117,13 +116,12 @@
 
     <script>
         // --- 1. CONFIGURATION ---
-        // If this HTML is hosted on a DIFFERENT domain than your Django backend,
-        // change this to your Django backend's domain (e.g., 'api.safetyally.app').
-        // If they are on the same domain, leave it as window.location.host.
-        // const BACKEND_DOMAIN = window.location.host;
-        const BACKEND_DOMAIN = "192.168.1.61:8000"; // Change this if your backend is on a different domain
+        // Automatically use current hostname (e.g. safetyally.app) when live,
+        // or fall back to your local server when testing locally.
+        const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const BACKEND_DOMAIN = isLocalhost ? "192.168.1.61:8000" : window.location.host;
 
-        // Extract the Live ID from the URL (e.g., takes "ID" from "safetyally.app/l/ID")
+        // Extract the Live ID from the URL (e.g., takes "ID" from "/l/ID/")
         const pathSegments = window.location.pathname.split('/').filter(Boolean);
         const liveId = pathSegments.pop();
 
@@ -154,10 +152,10 @@
         let isFirstLocation = true;
 
         // --- 3. WEBSOCKET CONNECTION ---
-        // Determine correct WebSocket protocol (wss:// for https, ws:// for http)
-        const wsProtocol = window.location.protocol === 'http:' ? 'wss://' : 'ws://';
-        // const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/Ppa7mIHqT_-Kx7wvY7imag/`;
-        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/${liveId}/`;
+        // FIX: Match wss:// with https:// and ws:// with http://
+        const wsProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/Ppa7mIHqT_-Kx7wvY7imag/`;
+        // const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/${liveId}/`;
 
         statusText.innerText = "Connecting to Session...";
         const socket = new WebSocket(wsUrl);
@@ -172,8 +170,6 @@
             try {
                 const data = JSON.parse(event.data);
 
-                // Expecting the payload defined in your Django consumer: 
-                // lat, long, accuracy, alt, alt_accuracy, time
                 if (data.lat && data.long) {
                     const lngLat = [parseFloat(data.long), parseFloat(data.lat)];
 
@@ -203,7 +199,7 @@
         socket.onclose = function (event) {
             statusText.innerText = "Session Ended";
             statusDot.className = "status-dot disconnected";
-            console.log("WebSocket closed");
+            console.log("WebSocket closed", event);
         };
 
         socket.onerror = function (error) {
