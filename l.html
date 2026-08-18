@@ -121,7 +121,9 @@
         // change this to your Django backend's domain (e.g., 'api.safetyally.app').
         // If they are on the same domain, leave it as window.location.host.
         // const BACKEND_DOMAIN = window.location.host;
-        const BACKEND_DOMAIN = "192.168.1.61:8000"; // Change this if your backend is on a different domain
+        // const BACKEND_DOMAIN = "192.168.1.61:8000"; // Change this if your backend is on a different domain
+        const BACKEND_DOMAIN = "api.safetyally.app"; // Change this if your backend is on a different domain
+        // const BACKEND_DOMAIN = "gpdxkrlh-8003.usw3.devtunnels.ms"; // Change this if your backend is on a different domain
 
         // Extract the Live ID from the URL (e.g., takes "ID" from "safetyally.app/l/ID")
         const pathSegments = window.location.pathname.split('/').filter(Boolean);
@@ -156,7 +158,8 @@
         // --- 3. WEBSOCKET CONNECTION ---
         // Determine correct WebSocket protocol (wss:// for https, ws:// for http)
         const wsProtocol = window.location.protocol === 'http:' ? 'wss://' : 'ws://';
-        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/Ppa7mIHqT_-Kx7wvY7imag/`;
+        const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/arqae4Y6TA2TWAdzGyR9_Q/`;
+        // /ws/live//
         // const wsUrl = `${wsProtocol}${BACKEND_DOMAIN}/ws/live/${liveId}/`;
 
 
